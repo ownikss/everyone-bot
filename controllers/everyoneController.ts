@@ -32,7 +32,7 @@ export default class EveryoneController {
             entity => entity.type === 'bot_command',
         )
 
-        return text.slice(commandEntity?.length || 0)
+        return text.replace(/\/[^\s]+/gi, ' ');
     }
 
     everyone = async (ctx: TelegrafContext) => {

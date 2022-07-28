@@ -44,6 +44,11 @@ bot.command('start', onboardingController.start)
 bot.command('clean', onboardingController.removeInactiveMembers)
 
 bot.on('left_chat_member', onboardingController.userLeaveGroup)
+bot.on('message', (ctx) => {
+    if (ctx.message?.text?.includes('/everyone')) {
+        everyoneController.everyone(ctx);
+    }
+})
 
 bot.startPolling()
 
