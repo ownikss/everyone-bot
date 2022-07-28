@@ -25,6 +25,6 @@ export default class FirebaseSettings {
             throw new SyntaxError('No resource specified when building firebase path')
         }
 
-        return `https://${this.projectName}.firebaseio.com/${resource}?auth=${this.databaseSecret}`;
+        return `https://${this.projectName}.firebasedatabase.app/${resource}?auth=${this.databaseSecret}`;
     }
 }
