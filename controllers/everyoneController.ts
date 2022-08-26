@@ -31,7 +31,7 @@ export default class EveryoneController {
         const commandEntity = entities.find(
             entity => entity.type === 'bot_command',
         )
-        const response = [/(\.)/, /(-)/].reduce((acc, symbol) => {
+        const response = [/(\.)/, /(-)/, /(\*)/,/(_)/,/(~)/].reduce((acc, symbol) => {
             return acc.replace(new RegExp(symbol, 'g'), `\\$1`);
         }, text);
         return response.replace(/(^\/[\w]+)/gi, ' ').replace(/([\s]\/[\w]+)/gi, ' ');
