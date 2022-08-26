@@ -31,8 +31,10 @@ export default class EveryoneController {
         const commandEntity = entities.find(
             entity => entity.type === 'bot_command',
         )
-
-        return text.replace(/\/[^\s]+/gi, ' ');
+        const response = [/(\.)/, /(-)/].reduce((acc, symbol) => {
+            return acc.replace(new RegExp(symbol, 'g'), `\\$1`);
+        }, text);
+        return response.replace(/(^\/[\w]+)/gi, ' ').replace(/([\s]\/[\w]+)/gi, ' ');
     }
 
     everyone = async (ctx: TelegrafContext) => {
